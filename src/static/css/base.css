@@ -1,0 +1,14 @@
+.rt-image-select-pv{
+    width: 100%;
+    position: relative;
+    border: 1px solid #99424f;
+}
+.rt-image-select-pv > .holder{
+    padding: 8px;
+}
+
+.rt-image-select-pv .holder > .label{
+    top: -5px;
+    left: 4px;
+    position: absolute;
+}
