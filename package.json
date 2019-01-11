@@ -1,0 +1,32 @@
+{
+    "name": "react-image-select-pv",
+    "version": "1.0.0",
+    "description": "Component to allow users preview selected images and deselect any unwanted image, if so desired.",
+    "main": "./bin/index.js",
+    "license": "MIT",
+    "scripts": {
+        "build": "webpack",
+        "test": "jest"
+    },
+    "peerDependencies": {
+        "prop-types": "^15.6.0",
+        "react": "^16.2.0",
+        "react-dom": "^16.2.0"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.2.2",
+        "@babel/preset-env": "^7.2.3",
+        "@babel/preset-react": "^7.0.0",
+        "babel-core": "^7.0.0-bridge.0",
+        "babel-jest": "^23.6.0",
+        "babel-loader": "^8.0.5",
+        "jest": "^23.6.0",
+        "path": "^0.12.7",
+        "prop-types": "^15.6.0",
+        "react": "^16.2.0",
+        "react-dom": "^16.2.0",
+        "regenerator-runtime": "^0.13.1",
+        "webpack": "^4.19.1",
+        "webpack-cli": "^3.2.1"
+    }
+}
