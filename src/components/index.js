@@ -2,14 +2,18 @@ import React, { Component } from 'react';
 import ispPropTypesChecker from '../utils/props/checkers/ispChecker';
 import rootDefaultState from '../utils/state/default/rootState';
 import Label from './label';
-import Images from './images';
+import Preview from './preview';
 import Prompter from './prompter';
 
 import '../static/css/base.css';
 
 export class Root extends Component {
     
-    state = rootDefaultState()
+    state = rootDefaultState();
+
+    ownOnChange(e) {
+
+    }
 
     render() {
         const { max, preview, label } = this.props;
@@ -21,9 +25,9 @@ export class Root extends Component {
 
                     <Label value={ label } />
 
-                    { preview ?  <Images /> : null }
+                    { preview ?  <Preview /> : null }
 
-                    { images.length < max ? <Prompter /> : null}
+                    { images.length < max ? <Prompter onChange={ e => this.ownOnChange(e) } /> : null}
 
                 </div>
             </div>
