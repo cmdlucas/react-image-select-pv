@@ -3,6 +3,7 @@ import { shallow } from 'enzyme';
 import { ImageSelectPreview } from '../../src/index';
 import Root from '../../src/components';
 import Label from '../../src/components/label';
+import Errors from '../../src/components/errors'
 import Preview from '../../src/components/preview';
 import Prompter from '../../src/components/prompter';
 import ispDefaultProps from '../../src/utils/props/default/ispDefaulProps';
@@ -46,11 +47,15 @@ describe('Root component', () => {
         expect( wrapper.find( Label ) ).toHaveLength(1);
     })
     
-    it('should render <Images /> when preview is true', () => {
+    it('should render <Errors /> ', () => {
+        expect( wrapper.find( Errors ) ).toHaveLength(1);
+    })
+    
+    it('should render <Preview /> when preview is true', () => {
         expect( wrapper.find( Preview ) ).toHaveLength(1);
     })
     
-    it('should not render <Images /> when preview is false', () => {
+    it('should not render <Preview /> when preview is false', () => {
         wrapper.setProps({ ...defaultProps, preview: false });
         expect( wrapper.find( Preview ) ).toHaveLength(0);
     })
@@ -60,7 +65,7 @@ describe('Root component', () => {
     })
     
     it('should not render <Prompter /> when images selected >= max value', () => {
-        wrapper.setState({ ...defaultState, images: new Array(maxUploadableImages).fill("image.jpg") })
+        wrapper.setState({ ...defaultState, imagesToUpload: new Array(maxUploadableImages).fill("image.jpg") })
         expect( wrapper.find( Prompter ) ).toHaveLength(0);
     })
     
