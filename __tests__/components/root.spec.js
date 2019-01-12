@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 import { ImageSelectPreview } from '../../src/index';
 import Root from '../../src/components';
 import Label from '../../src/components/label';
-import Images from '../../src/components/images';
+import Preview from '../../src/components/preview';
 import Prompter from '../../src/components/prompter';
 import ispDefaultProps from '../../src/utils/props/default/ispDefaulProps';
 import rootDefaultState from '../../src/utils/state/default/rootState';
@@ -12,7 +12,7 @@ import { maxUploadableImages } from '../../src/utils/opconstants';
 const defaultProps = ispDefaultProps();
 
 describe('ImageSelectPreview component', () =>  {
-    const wrapper = shallow( <ImageSelectPreview /> ) //default props already assigned in component
+    const wrapper = shallow( <ImageSelectPreview /> )
 
     afterEach(() => { wrapper.setProps(defaultProps) });
 
@@ -47,12 +47,12 @@ describe('Root component', () => {
     })
     
     it('should render <Images /> when preview is true', () => {
-        expect( wrapper.find( Images ) ).toHaveLength(1);
+        expect( wrapper.find( Preview ) ).toHaveLength(1);
     })
     
     it('should not render <Images /> when preview is false', () => {
         wrapper.setProps({ ...defaultProps, preview: false });
-        expect( wrapper.find( Images ) ).toHaveLength(0);
+        expect( wrapper.find( Preview ) ).toHaveLength(0);
     })
     
     it('should render <Prompter /> when images selected < max value', () => {
