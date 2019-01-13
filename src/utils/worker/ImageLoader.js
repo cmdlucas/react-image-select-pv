@@ -28,11 +28,11 @@ export class ImageLoader {
      */
     load() {
         return new Promise((resolve, reject) => {
-            this.loadImage(resolve, reject, new FileReader());
+            this.loadImage(resolve, reject);
         })
     }
     
-    loadImage(resolve, reject, fileReader) {
+    loadImage(resolve, reject) {
         //imagesToPreview state where all image metadata is stored
         let imagesToPreview = isEmptyObject(this.mockState.imagesToPreview) ? [] : [...this.mockState.imagesToPreview];
 
@@ -58,6 +58,8 @@ export class ImageLoader {
 
                     // Generate unique sharable index
                     let index = new Date().getTime() + i;
+
+                    let fileReader = new FileReader();
                 
                     fileReader.onloadend = e => {
                         // Store image into list for view
@@ -81,7 +83,7 @@ export class ImageLoader {
                     fileReader.onabort = () => errorOut();
 
                     // Async read file and send status to supplied callbacks 
-                    fileReader.readAsDataURL(file);
+                    this.startReading(file, fileReader);
 
                 } else {
                     this.errorHandler(file.name, errorTypes.maxImageSize, `Image is too large (max. ${bytesKbMb(this.mockState.maxImageSize)}).`);
@@ -95,6 +97,15 @@ export class ImageLoader {
         }
 
 
+    }
+
+    /**
+     * Start reading file asynchronously
+     * @param {Blob} file 
+     * @param {FileReader} fileReader 
+     */
+    startReading(file, fileReader) {
+        fileReader.readAsDataURL(file);    
     }
 
     /**

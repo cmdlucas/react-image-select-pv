@@ -146,3 +146,10 @@ The text to be used in the component's prompt button.
 
 An object of react-like styles to apply on the images in the preview.
 
+## Version
+
+All releases starting from v1.1.0 will follow [Semantic Versioning](https://semver.org)
+
+## License
+
+MIT

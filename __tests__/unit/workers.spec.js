@@ -6,6 +6,7 @@ const setMockFunctions = imageLoader => {
     imageLoader.errorHandler = jest.fn();
     imageLoader.release = jest.fn();  
     imageLoader.fillProblemFiles = jest.fn();  
+    imageLoader.startReading = jest.fn();  
 }
 
 const presetBadFileName = () => {
@@ -38,7 +39,6 @@ describe('ImageLoader', () => {
     let imageLoader = new ImageLoader([], mockState);
     presetGoodFileName(imageLoader);
     setMockFunctions(imageLoader);
-    let fileReader = setFileReaderMock();
 
     afterEach(() => { 
         imageLoader.files = presetGoodFileName(); 
@@ -48,42 +48,54 @@ describe('ImageLoader', () => {
     it('load() should return promise', () => {
         expect( imageLoader.load() ).toBeInstanceOf(Promise);
     })
+    
+    it('loadImage() should call startReading() when all is good', () => {
+        imageLoader.loadImage(resolve, reject);
+        expect( imageLoader.startReading ).toHaveBeenCalled();
+    })
 
     it('loadImage() should call errorHandler() when a file extension is not supported', () => {
         imageLoader.files = presetBadFileName();
-        imageLoader.loadImage(resolve, reject, fileReader);
+        imageLoader.loadImage(resolve, reject);
         expect( imageLoader.errorHandler ).toHaveBeenCalled();
     })
     
     it('loadImage() should call release() when a file extension is not supported', () => {
         imageLoader.files = presetBadFileName();
-        imageLoader.loadImage(resolve, reject, fileReader);
+        imageLoader.loadImage(resolve, reject);
         expect( imageLoader.release ).toHaveBeenCalled();        
     })
     
     it('loadImage() should call fillProblemFiles() when max selectable files have been exceeded', () => {
         imageLoader.mockState.max = 0;
-        imageLoader.loadImage(resolve, reject, fileReader);
+        imageLoader.loadImage(resolve, reject);
         expect( imageLoader.fillProblemFiles ).toHaveBeenCalled(); 
     })
     
     it('loadImage() should call release() when max selectable files have been exceeded', () => {
         imageLoader.mockState.max = 0;
-        imageLoader.loadImage(resolve, reject, fileReader);
+        imageLoader.loadImage(resolve, reject);
         expect( imageLoader.release ).toHaveBeenCalled();         
     })
     
     it('loadImage() should call errorHandler() when a file size has been exceeded', () => {
         imageLoader.mockState.maxImageSize = 1000;
-        imageLoader.loadImage(resolve, reject, fileReader);
+        imageLoader.loadImage(resolve, reject);
         expect( imageLoader.errorHandler ).toHaveBeenCalled(); 
 
     })
     
     it('loadImage() should call release() when  a file size has been exceeded', () => {
         imageLoader.mockState.maxImageSize = 1000;
-        imageLoader.loadImage(resolve, reject, fileReader);
+        imageLoader.loadImage(resolve, reject);
         expect( imageLoader.release ).toHaveBeenCalled();         
+    })
+    
+    it('startReading() should call fileReader.readAsDataURL()', () => {
+        let fileReader = setFileReaderMock();
+        let imageLoader = new ImageLoader([], mockState);
+        imageLoader.startReading(new Blob(), fileReader)
+        expect( fileReader.readAsDataURL ).toHaveBeenCalled();         
     })
 })
 
