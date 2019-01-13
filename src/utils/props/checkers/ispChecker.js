@@ -7,14 +7,13 @@ const imageSelectPreviewPropTypesChecker = () => ({
     preview: PropTypes.bool.isRequired,
     hide: PropTypes.bool.isRequired,
     max: PropTypes.number.isRequired,
+    maxImageSize: PropTypes.number.isRequired,
     imageTypes: PropTypes.string.isRequired,
+    buttonText: PropTypes.string.isRequired,
     imageStyle: PropTypes.object,
-    selectorStyle: PropTypes.object,
-    label: PropTypes.string,
+    componentLabel: PropTypes.string,
     onChange: PropTypes.func,
-    onItemsChecked: PropTypes.func,
     onError: PropTypes.func,
-    formData: PropTypes.object,
     renderTo: PropTypes.string    
 });
 

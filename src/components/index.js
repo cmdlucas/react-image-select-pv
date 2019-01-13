@@ -6,8 +6,10 @@ import Errors from './errors';
 import Preview from './preview';
 import Prompter from './prompter';
 import ImageLoader from '../utils/worker/ImageLoader';
+import Broadcaster from '../utils/worker/Broadcaster';
 
 import '../static/css/base.css';
+
 
 export class Root extends Component {
 
@@ -18,12 +20,15 @@ export class Root extends Component {
             ...this.state,
             fetching: true
         })
-        new ImageLoader(e.target.files, { ...this.state, max: this.props.max }).load()
+        new ImageLoader(e.target.files, { 
+            ...this.state, 
+            max: this.props.max,
+            maxImageSize: this.props.maxImageSize
+        }).load()
             .then(newState => {
                 if (this._mounted) {
-                    this.setState({
-                        ...newState
-                    })
+                    this.setState({ ...newState });
+                    this.broadcastNewState();
                 }
             })
     }
@@ -38,11 +43,19 @@ export class Root extends Component {
         }
         if (this._mounted) {
             this.setState({
-                ...this.state,
-                problemFiles: [],
+                ...this.state, problemFiles: [],
                 imagesToPreview: imagesToPreview,
             })
         }
+    }
+
+    broadcastNewState() {        
+        const broadcast = new Broadcaster({
+            imagesToPreview: this.state.imagesToPreview,
+            problems: this.state.problemFiles
+        })
+        broadcast.emitData(this.props.onChange);
+        broadcast.emitErrors(this.props.onError);
     }
 
     componentDidMount() {
@@ -54,20 +67,21 @@ export class Root extends Component {
     }
 
     render() {
-        const { max, preview, label } = this.props;
+        const { max, preview, componentLabel, buttonText, imageStyle} = this.props;
         const { fetching, imagesToPreview, problemFiles } = this.state;
 
         return (
             <div className="rt-image-select-pv">
                 <div className="holder">
 
-                    {label !== null ?
-                        <Label value={label} />
+                    {componentLabel !== null ?
+                        <Label value={componentLabel} />
                         : null
                     }
 
                     {preview ?
-                        <Preview images={imagesToPreview} onRemove={index => this.ownOnRemove(index)} />
+                        <Preview images={imagesToPreview} 
+                                onRemove={index => this.ownOnRemove(index)} imageStyle={imageStyle} />
                         : null
                     }
 
@@ -77,7 +91,7 @@ export class Root extends Component {
                     }
 
                     {imagesToPreview.length < max ?
-                        <Prompter onChange={e => this.ownOnChange(e)} fetching={fetching} />
+                        <Prompter onChange={e => this.ownOnChange(e)} fetching={fetching} buttonText={buttonText} />
                         : null
                     }
 

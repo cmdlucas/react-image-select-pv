@@ -4,7 +4,7 @@ import spinner from '../../static/icons/ajax-loader.gif';
 
 const trigger = () => document.querySelector('#image-prompt').click();
 
-export const Prompter = ({ fetching, onChange }) => {
+export const Prompter = ({ fetching, onChange, buttonText }) => {
     return (
         <div className="prompter no-user-select">
             <div className="box text-center">
@@ -18,7 +18,7 @@ export const Prompter = ({ fetching, onChange }) => {
                                         <img alt=" " src={prompterIcon} />
                                     </span>
                                     <span className="prompter-label">
-                                        <small>Add Images</small>
+                                        <small>{buttonText}</small>
                                     </span>
                                 </div>
                             </React.Fragment>

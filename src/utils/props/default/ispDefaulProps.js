@@ -1,17 +1,16 @@
-import { supportedImageTypes, selectorPromptLabel, maxUploadableImages } from "../../opconstants";
+import { supportedImageTypes, maxUploadableImages, maxImageSize, buttonText } from "../../opconstants";
 
 const imageSelectPreviewDefaultProps = () => ({
     preview: true,
     hide: false,
     max: maxUploadableImages,
+    maxImageSize: maxImageSize,
     imageTypes: supportedImageTypes,
+    buttonText: buttonText,
     imageStyle: null,
-    selectorStyle: null,
-    label: null,
+    componentLabel: null,
     onChange: null,
-    onItemsChecked: null,
     onError: null,
-    formData: null,
     renderTo: null
 });
 

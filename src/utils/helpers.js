@@ -13,6 +13,18 @@ export const isEmptyObject = (obj) => {
 }
 
 /**
+ * Convert Bytes to KB / MB
+ * @param {number} value
+ */
+export const bytesKbMb = value => {
+    let bKbMb = value / 1000000;
+    if(bKbMb < 1)
+        return `${Math.ceil(value / 1000)}KB`
+    else 
+        return `${Math.ceil(bKbMb)}MB`
+}
+
+/**
  * Validate an image
  */
 export class ImageValidator {
@@ -35,7 +47,8 @@ export class ImageValidator {
      */
     isValid(imgName) {
         let arr = imgName.split('.');
-        return this.imgex.includes(arr[arr.length - 1]);
+        let ext = arr[arr.length - 1];
+        return this.imgex.includes(ext) || (this.imgex.includes('jpg') && ext === 'jpeg') || (this.imgex.includes('jpeg') && ext === 'jpg');
     }
 
 

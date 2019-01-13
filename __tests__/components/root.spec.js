@@ -8,7 +8,7 @@ import Preview from '../../src/components/preview';
 import Prompter from '../../src/components/prompter';
 import ispDefaultProps from '../../src/utils/props/default/ispDefaulProps';
 import rootDefaultState from '../../src/utils/state/default/rootState';
-import { maxUploadableImages, selectorPromptLabel } from '../../src/utils/opconstants';
+import { maxUploadableImages, componentLabel } from '../../src/utils/opconstants';
 
 const defaultProps = ispDefaultProps();
 
@@ -44,7 +44,7 @@ describe('Root component', () => {
     afterEach(() => { wrapper.setProps(defaultProps); wrapper.setState(defaultState) });
     
     it('should render <Label /> when label is not null', () => {
-        wrapper.setProps({ ...defaultProps, label: selectorPromptLabel });
+        wrapper.setProps({ ...defaultProps, componentLabel: componentLabel });
         expect( wrapper.find( Label ) ).toHaveLength(1);
     })
     
