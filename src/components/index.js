@@ -18,7 +18,7 @@ export class Root extends Component {
             ...this.state,
             fetching: true
         })
-        new ImageLoader(e.target.files, this.state).load()
+        new ImageLoader(e.target.files, { ...this.state, max: this.props.max }).load()
             .then(newState => {
                 if (this._mounted) {
                     this.setState({
@@ -29,16 +29,7 @@ export class Root extends Component {
     }
 
     ownOnRemove(index) {
-        let imagesToUpload = [...this.state.imagesToUpload];
         let imagesToPreview = [...this.state.imagesToPreview];
-        //Different comparison because the storage method for both were async and sync 
-        //Therefore different order could have been produced
-        for (let i = 0; i < imagesToUpload.length; i++) {
-            if (imagesToUpload[i].index === index) {
-                imagesToUpload.splice(i, 1);
-                break;
-            }
-        }
         for (let i = 0; i < imagesToPreview.length; i++) {
             if (imagesToPreview[i].index === index) {
                 imagesToPreview.splice(i, 1);
@@ -48,7 +39,7 @@ export class Root extends Component {
         if (this._mounted) {
             this.setState({
                 ...this.state,
-                imagesToUpload: imagesToUpload,
+                problemFiles: [],
                 imagesToPreview: imagesToPreview,
             })
         }
@@ -64,20 +55,29 @@ export class Root extends Component {
 
     render() {
         const { max, preview, label } = this.props;
-        const { fetching, imagesToUpload, imagesToPreview, problemFiles } = this.state;
+        const { fetching, imagesToPreview, problemFiles } = this.state;
 
         return (
             <div className="rt-image-select-pv">
                 <div className="holder">
 
-                    {preview ? <Preview images={imagesToPreview} onRemove={index => this.ownOnRemove(index)} /> : null}
+                    {label !== null ?
+                        <Label value={label} />
+                        : null
+                    }
 
-                    <Errors errors={ problemFiles }/>
+                    {preview ?
+                        <Preview images={imagesToPreview} onRemove={index => this.ownOnRemove(index)} />
+                        : null
+                    }
 
-                    <Label value={label} />
+                    {problemFiles.length > 0 ?
+                        <Errors errors={problemFiles} />
+                        : null
+                    }
 
-                    {imagesToUpload.length < max ?
-                        <Prompter max={ max } onChange={e => this.ownOnChange(e)} fetching={ fetching } /> 
+                    {imagesToPreview.length < max ?
+                        <Prompter onChange={e => this.ownOnChange(e)} fetching={fetching} />
                         : null
                     }
 

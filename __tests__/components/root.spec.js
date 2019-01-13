@@ -8,7 +8,7 @@ import Preview from '../../src/components/preview';
 import Prompter from '../../src/components/prompter';
 import ispDefaultProps from '../../src/utils/props/default/ispDefaulProps';
 import rootDefaultState from '../../src/utils/state/default/rootState';
-import { maxUploadableImages } from '../../src/utils/opconstants';
+import { maxUploadableImages, selectorPromptLabel } from '../../src/utils/opconstants';
 
 const defaultProps = ispDefaultProps();
 
@@ -41,14 +41,15 @@ describe('Root component', () => {
 
     const wrapper = shallow( <Root { ...defaultProps }  /> );
 
-    afterEach(() => { wrapper.setProps(defaultProps); });
-
-    it('should render <Label />', () => {
+    afterEach(() => { wrapper.setProps(defaultProps); wrapper.setState(defaultState) });
+    
+    it('should render <Label /> when label is not null', () => {
+        wrapper.setProps({ ...defaultProps, label: selectorPromptLabel });
         expect( wrapper.find( Label ) ).toHaveLength(1);
     })
     
-    it('should render <Errors /> ', () => {
-        expect( wrapper.find( Errors ) ).toHaveLength(1);
+    it('should not render <Label /> when label is null', () => {
+        expect( wrapper.find( Label ) ).toHaveLength(0);
     })
     
     it('should render <Preview /> when preview is true', () => {
@@ -60,12 +61,22 @@ describe('Root component', () => {
         expect( wrapper.find( Preview ) ).toHaveLength(0);
     })
     
+    it('should render <Errors /> when problemFiles is not empty ', () => {
+        let problemFiles = [{}, {}];
+        wrapper.setState({ ...defaultState, problemFiles: problemFiles});
+        expect( wrapper.find( Errors ) ).toHaveLength(1);
+    })
+    
+    it('should not render <Errors /> when problemFiles is empty ', () => {
+        expect( wrapper.find( Errors ) ).toHaveLength(0);
+    })
+
     it('should render <Prompter /> when images selected < max value', () => {
         expect( wrapper.find( Prompter ) ).toHaveLength(1);
     })
-    
+
     it('should not render <Prompter /> when images selected >= max value', () => {
-        wrapper.setState({ ...defaultState, imagesToUpload: new Array(maxUploadableImages).fill("image.jpg") })
+        wrapper.setState({ ...defaultState, imagesToPreview: new Array(maxUploadableImages).fill("image.jpg") })
         expect( wrapper.find( Prompter ) ).toHaveLength(0);
     })
     

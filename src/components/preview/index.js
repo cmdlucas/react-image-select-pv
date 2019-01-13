@@ -5,21 +5,16 @@ export const Preview = ({ images, onRemove }) => {
     const loadedImages = images.map((image, index) => {
         return (
             <div className="each-image" key={index}>
-                <div className="box">
-                    <div className="new-post-image no-user-select rel-position">
-                        <div className="new-post-image-selector">
-                            <p className="text-center">
-                                <img alt=" " className="selected-image loader-center" src={image.content} />
-                            </p>
+                <div className="box no-user-select">
+                    <img alt=" " className="loader-center" src={image.content} />
+                    <div className="ab-position-cancel" data-index={image.index} onClick={() => onRemove(image.index)}>
+                        <div className="small-cancel">
+                            <span>x</span>
                         </div>
-                        <span className="ab-position small-cancel" data-index={image.index} onClick={() => onRemove(image.index)}>
-                            <i className="material-icons">close</i>
-                        </span>
                     </div>
                 </div>
             </div>
         )
-
     })
 
     return (

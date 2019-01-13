@@ -1,12 +1,12 @@
-.no-user-select{
+.rt-image-select-pv .no-user-select{
     user-select: none;
     -webkit-user-select: none;
     -moz-user-select: none;
 }
-.gone{
+.rt-image-select-pv .gone{
     display: none;
 }
-.text-center{
+.rt-image-select-pv .text-center{
     text-align: center;
 }
 .rt-image-select-pv{
@@ -29,11 +29,73 @@
     margin: 15px 0px;
 }
 .rt-image-select-pv .holder > .prompter{
-    padding: 8px;
+    width: 200px;
+    padding: 4px;
     cursor: pointer;
     position: relative;
-    border: 1px solid #ccc;
+    border-radius: 5px;
+    color: #333333;
+    border: 1px solid #cccccc;
+    background-color: #F1F1FF;
+    box-shadow: rgba(145, 145, 145, 1) 1px 1px;
+}
+.rt-image-select-pv .holder > .prompter .prompter-button{
+    display: inline-flex;
 }
 .rt-image-select-pv .holder > .prompter img{
-    height: 50px;
+    height: 20px;
+}
+.rt-image-select-pv .holder > .prompter small{
+    margin-left: 20px;
+}
+.rt-image-select-pv .holder > .prompter .box .prompter-label{
+    font-size: 18px;
+    margin-top: -3px;
+}
+.rt-image-select-pv .holder > .preview{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    flex-direction: row;
+}
+.rt-image-select-pv .holder > .preview .each-image{ 
+    margin-right: 15px;
+    position: relative; 
+    margin-bottom: 10px;
+    border: 1px solid #ccc;  
+}
+.rt-image-select-pv .holder > .preview .each-image:last-child{ 
+    margin-right: 0px;
+}
+.rt-image-select-pv .holder > .preview .each-image > .box{    
+    padding: 8px;
+}
+.rt-image-select-pv .holder > .preview .each-image > .box img{ 
+    height: 100px;
+    margin-bottom: -6px;
+}
+.rt-image-select-pv .holder > .preview .ab-position-cancel{
+    top: -4px;
+    right: -4px;
+    position: absolute;
+}
+.rt-image-select-pv .holder > .preview .each-image > .box .small-cancel{
+    font-size: 14px;
+    color: #333333;
+    text-align: center;
+    border-radius: 50%;
+    position: relative;
+    padding: 4px 8px;
+    background: rgba(145, 145, 145, 0.7);
+    font-family: 'Verdana', 'Arial Narrow', Arial, sans-serif;
+}
+.rt-image-select-pv .holder > .errors{
+    color: palevioletred;
+    font-size: 0.9em;
+}
+.rt-image-select-pv .holder > .errors p{
+    font-size: 1.1em;
+    font-weight: 500;
+    margin: 0px;
 }

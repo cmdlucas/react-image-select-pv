@@ -7,7 +7,7 @@ const imageSelectPreviewDefaultProps = () => ({
     imageTypes: supportedImageTypes,
     imageStyle: null,
     selectorStyle: null,
-    label: selectorPromptLabel,
+    label: null,
     onChange: null,
     onItemsChecked: null,
     onError: null,

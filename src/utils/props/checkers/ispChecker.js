@@ -10,7 +10,7 @@ const imageSelectPreviewPropTypesChecker = () => ({
     imageTypes: PropTypes.string.isRequired,
     imageStyle: PropTypes.object,
     selectorStyle: PropTypes.object,
-    label: PropTypes.string.isRequired,
+    label: PropTypes.string,
     onChange: PropTypes.func,
     onItemsChecked: PropTypes.func,
     onError: PropTypes.func,

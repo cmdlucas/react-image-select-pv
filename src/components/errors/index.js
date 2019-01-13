@@ -3,7 +3,7 @@ import React from 'react';
 export const Errors = ({ errors }) => {
     const errorsLoaded = errors.map((e, index) => {
         return (
-            <div>
+            <div className="each-error" key={index}>
                 <span>{ e.name }: { e.error }</span>
             </div>
         )
@@ -13,7 +13,7 @@ export const Errors = ({ errors }) => {
             {
                 errors.length > 0 ?
                     <div className="errors">
-                        <h3>There were some errors with your images</h3>
+                        <p>There were some errors with your selection:</p>
                         {errorsLoaded}
                     </div>
                     : null

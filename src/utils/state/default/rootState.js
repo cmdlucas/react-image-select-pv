@@ -9,7 +9,6 @@ import { supportedImageTypes } from "../../opconstants";
  */
 const rootDefaultState = () => ({
     fetching: false,
-    imagesToUpload: [],
     imagesToPreview: [],
     problemFiles: [],
     allowedImages: supportedImageTypes
