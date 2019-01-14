@@ -31,6 +31,7 @@ yarn add react-image-select-pv
 Say we have a simple `<div>` element that we want to select and preview images to, we can use `<ImageSelectPreview />` as is, without any configuration
 
 ```
+import React from 'react'
 import ImageSelectPreview from 'react-image-select-pv';
 
 const SimpleForm = () => {
@@ -148,7 +149,7 @@ An object of react-like styles to apply on the images in the preview.
 
 ## Version
 
-All releases starting from v1.1.0 will follow [Semantic Versioning](https://semver.org)
+All releases starting from v1.1.0 follow [Semantic Versioning](https://semver.org)
 
 ## License
 
