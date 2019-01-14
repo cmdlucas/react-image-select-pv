@@ -35,9 +35,11 @@ import React from 'react'
 import ImageSelectPreview from 'react-image-select-pv';
 
 const SimpleForm = () => {
-    <div>
-        <ImageSelectPreview />
-    </div>
+    return (
+        <div>
+            <ImageSelectPreview />
+        </div>
+    )
 }
 
 export default React.memo(SimpleForm)
