@@ -1,6 +1,6 @@
 {
     "name": "react-image-select-pv",
-    "version": "1.1.1",
+    "version": "1.1.2",
     "description": "A configurable react component that allows preview of images and some other functionalities.",
     "main": "./bin/index.js",
     "author": "Caleb I. Lucas <caleb@lucasbin.com> (https://caleb.lucasbin.com)",
