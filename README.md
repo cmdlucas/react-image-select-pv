@@ -45,7 +45,7 @@ const SimpleDiv = () => {
     )
 }
 
-export default React.memo(SimpleForm)
+export default React.memo(SimpleDiv)
 
 ```
 
