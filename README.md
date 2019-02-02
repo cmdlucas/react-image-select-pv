@@ -27,7 +27,7 @@ yarn add react-image-select-pv
 ```
 
 #### Note: 
-If you use `redux`, you would need to be on version `>=6.0.0` or `^6.0.0` (depending on the semantics required by your project) because of known issues with `React.memo` on previous versions. [See here] (https://github.com/reduxjs/react-redux/issues/1061)
+If you use `redux`, you would need to be on version `>=6.0.0` or `^6.0.0` (depending on the semantics required by your project) because of known issues with `React.memo` on previous versions. [See here](https://github.com/reduxjs/react-redux/issues/1061)
 
 ## Example
 
