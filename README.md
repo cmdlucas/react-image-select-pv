@@ -26,6 +26,9 @@ or as the case may be
 yarn add react-image-select-pv
 ```
 
+#### Note: 
+If you use redux, you would need to be on version `>=6.0.0` or `^6.0.0` (depending on the semantics required by your project) because of known issues with React.memo on previous versions. [See here] (https://github.com/reduxjs/react-redux/issues/1061)
+
 ## Example
 
 Say we have a simple `<div>` element that we want to select and preview images to, we can use `<ImageSelectPreview />` as is, without any configuration
@@ -34,7 +37,7 @@ Say we have a simple `<div>` element that we want to select and preview images t
 import React from 'react'
 import ImageSelectPreview from 'react-image-select-pv';
 
-const SimpleForm = () => {
+const SimpleDiv = () => {
     return (
         <div>
             <ImageSelectPreview />
@@ -61,6 +64,7 @@ We can add some configurations as props
 
 ```
 
+
 ## API as Props
 
 Here is a list of the supported props that can be used to provide or override  the component's behaviours.
@@ -70,7 +74,7 @@ Here is a list of the supported props that can be used to provide or override  t
 
 You can configure the functionality of this component to suit your app's logic flow.
 
-##### max [string] (optional) - default: 12
+##### max [number] (optional) - default: 12
 
 Maximum selectable images.
 

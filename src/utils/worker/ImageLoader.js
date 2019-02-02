@@ -33,7 +33,7 @@ export class ImageLoader {
     }
     
     loadImage(resolve, reject) {
-        //imagesToPreview state where all image metadata is stored
+        //imagesToPreview - state where all image metadata is stored
         let imagesToPreview = isEmptyObject(this.mockState.imagesToPreview) ? [] : [...this.mockState.imagesToPreview];
 
         let imagesCount = imagesToPreview.length;
@@ -109,7 +109,7 @@ export class ImageLoader {
     }
 
     /**
-     * Resole and/or reject promise
+     * Resolve and/or reject promise
      * @param {Function} resolve 
      * @param {Function} reject 
      */

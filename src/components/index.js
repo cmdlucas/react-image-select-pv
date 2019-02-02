@@ -11,7 +11,7 @@ import Broadcaster from '../utils/worker/Broadcaster';
 import '../static/css/base.css';
 
 
-export class Root extends Component {
+class Root extends Component {
 
     state = rootDefaultState();
 
