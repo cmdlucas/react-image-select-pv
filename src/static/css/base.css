@@ -73,7 +73,7 @@
 }
 .rt-image-select-pv .holder > .preview .each-image > .box img{ 
     height: 100px;
-    margin-bottom: -6px;
+    width: auto;
 }
 .rt-image-select-pv .holder > .preview .ab-position-cancel{
     top: -4px;
@@ -86,7 +86,7 @@
     text-align: center;
     border-radius: 50%;
     position: relative;
-    padding: 4px 8px;
+    padding: 2px 8px;
     background: rgba(145, 145, 145, 0.7);
     font-family: 'Verdana', 'Arial Narrow', Arial, sans-serif;
 }
