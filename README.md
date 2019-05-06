@@ -145,7 +145,7 @@ You can specify the style or text for some elements within the component and it 
 
 The text to be used as the label for the component.
 
-##### buttonLabel [string] (optional) - default: "Add Images"
+##### buttonText [string] (optional) - default: "Add Images"
 
 The text to be used in the component's prompt button.
 
