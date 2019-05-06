@@ -35,9 +35,17 @@ describe('Prompter component', () => {
     it('should render .prompter-button when not fetching', () => {
         expect( wrapper.find('.prompter-button') ).toHaveLength(1);
     })
+    
+    it('should render .drag-drop-prompt when not fetching', () => {
+        expect( wrapper.find('.drag-drop-prompt') ).toHaveLength(1);
+    })
 
     it('should not render .prompter-button when fetching', () => {
         wrapper.setProps({ ...ppProps, fetching: true })
         expect( wrapper.find('.prompter-button') ).toHaveLength(0);
+    })
+    
+    it('should not render .drag-drop-prompt when fetching', () => {
+        expect( wrapper.find('.drag-drop-prompt') ).toHaveLength(0);
     })
 })

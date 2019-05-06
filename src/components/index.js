@@ -15,13 +15,17 @@ class Root extends Component {
 
     state = rootDefaultState();
 
-    ownOnChange(e) {
+    /**
+     * Load images supplied by user
+     * @param {FileList[]} files 
+     */
+    loadImages(files) {
         this.setState({
             ...this.state,
             fetching: true
         })
-        new ImageLoader(e.target.files, { 
-            ...this.state, 
+        new ImageLoader(files, {
+            ...this.state,
             max: this.props.max,
             maxImageSize: this.props.maxImageSize
         }).load()
@@ -33,29 +37,57 @@ class Root extends Component {
             })
     }
 
-    ownOnRemove(index) {
-        let imagesToPreview = [...this.state.imagesToPreview];
-        for (let i = 0; i < imagesToPreview.length; i++) {
-            if (imagesToPreview[i].index === index) {
-                imagesToPreview.splice(i, 1);
-                break;
-            }
-        }
+    /**
+     * React to changes from input event
+     * @param {Event} e 
+     */
+    ownOnChange(e) {
+        this.loadImages(e.target.files);
+    }
+
+    /**
+     * React to user's request to remove item
+     * @param {string} imgIndex 
+     */
+    ownOnRemove(imgIndex) {
+        let imagesToPreview = [ ...this.state.imagesToPreview ];
         if (this._mounted) {
             this.setState({
                 ...this.state, problemFiles: [],
-                imagesToPreview: imagesToPreview,
+                imagesToPreview: imagesToPreview.filter(({index}) => imgIndex !== index)
             })
         }
     }
 
-    broadcastNewState() {        
+    /**
+     * Broadcast new state to API user
+     */
+    broadcastNewState() {
         const broadcast = new Broadcaster({
-            imagesToPreview: this.state.imagesToPreview,
-            problems: this.state.problemFiles
+            problems: this.state.problemFiles,
+            images: this.state.imagesToPreview
         })
         broadcast.emitData(this.props.onChange);
         broadcast.emitErrors(this.props.onError);
+    }
+
+    /**
+     * Respond when something is dragged over
+     * @param {DragEvent} e 
+     */
+    handleDragOver(e) {
+        e.preventDefault();
+        return false;
+    }
+
+    /**
+     * Respond when something is dropped
+     * @param {DragEvent} e 
+     */
+    handleDrop(e) {
+        e.preventDefault();
+        this.loadImages(e.dataTransfer.files);
+        return false;
     }
 
     componentDidMount() {
@@ -67,33 +99,22 @@ class Root extends Component {
     }
 
     render() {
-        const { max, preview, componentLabel, buttonText, imageStyle} = this.props;
+        const { max, preview, componentLabel, buttonText, dropAreaText, imageStyle } = this.props;
         const { fetching, imagesToPreview, problemFiles } = this.state;
 
         return (
-            <div className="rt-image-select-pv">
+            <div className="rt-image-select-pv" onDrop={e => this.handleDrop(e)} onDragOver={e => this.handleDragOver(e)}>
                 <div className="holder">
 
-                    {componentLabel !== null ?
-                        <Label value={componentLabel} />
-                        : null
-                    }
+                    {componentLabel && <Label value={componentLabel} />}
 
-                    {preview ?
-                        <Preview images={imagesToPreview} 
-                                onRemove={index => this.ownOnRemove(index)} imageStyle={imageStyle} />
-                        : null
-                    }
+                    {preview && <Preview images={imagesToPreview}
+                        onRemove={index => this.ownOnRemove(index)} imageStyle={imageStyle} />}
 
-                    {problemFiles.length > 0 ?
-                        <Errors errors={problemFiles} />
-                        : null
-                    }
+                    {problemFiles.length > 0 && <Errors errors={problemFiles} />}
 
-                    {imagesToPreview.length < max ?
-                        <Prompter onChange={e => this.ownOnChange(e)} fetching={fetching} buttonText={buttonText} />
-                        : null
-                    }
+                    {imagesToPreview.length < max &&
+                        <Prompter onChange={e => this.ownOnChange(e)} fetching={fetching} buttonText={buttonText} dropAreaText={dropAreaText} />}
 
                 </div>
             </div>

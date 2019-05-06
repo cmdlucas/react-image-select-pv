@@ -103,8 +103,8 @@ describe('ImageLoader', () => {
 describe('Broadcaster', () => {
     let blob = new Blob();
     blob.name = "image.jpg";
-    let imagesToPreview = new Array(3).fill({content: "bas64-content", image: blob});
-    let broadcaster = new Broadcaster({imagesToPreview: imagesToPreview});
+    let images = new Array(3).fill({content: "bas64-content", image: blob});
+    let broadcaster = new Broadcaster({images: images});
 
     it('emitData() should call the callback function', () => {
         let callback = jest.fn();

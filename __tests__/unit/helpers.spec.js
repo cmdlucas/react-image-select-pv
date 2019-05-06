@@ -1,4 +1,4 @@
-import { isEmptyObject, ImageValidator, bytesKbMb } from "../../src/utils/helpers";
+import { isEmptyObject, ImageValidator, bytesKbMb, objectToArray } from "../../src/utils/helpers";
 import { supportedImageTypes } from "../../src/utils/opconstants";
 
 
@@ -13,6 +13,18 @@ describe('isEmptyObject()', () => {
     it('should return false when object is not empty', () => {
         testObject = { baker: true};
         expect( isEmptyObject(testObject) ).toBe( false );        
+    })
+})
+
+describe('objectToArray()', () => {
+    let testObject = { a: 1, b: 2 };
+
+    it('should return array when object is undefined', () => {
+        expect( objectToArray(undefined) ).toBeInstanceOf( Array );
+    })
+
+    it('should return array when object has value or is empty', () => {
+        expect( objectToArray(testObject) ).toEqual([1, 2]);
     })
 })
 

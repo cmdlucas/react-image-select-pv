@@ -10,9 +10,9 @@ export class Broadcaster {
     emitData(callBack) {
         try {
             if (typeof callBack === 'function') {
-                const images = this.data.imagesToPreview;
                 let filesArray = [];
-                images.forEach(data => {
+                //Convert to an output suitable for API user
+                this.data.images.forEach(data => {
                     filesArray.push({ content: data.content, blob: data.image});
                 });
                 callBack(filesArray);

@@ -1,4 +1,4 @@
-import { supportedImageTypes, maxUploadableImages, maxImageSize, buttonText } from "../../opconstants";
+import { supportedImageTypes, maxUploadableImages, maxImageSize, buttonText, dropAreaText } from "../../opconstants";
 
 const imageSelectPreviewDefaultProps = () => ({
     preview: true,
@@ -7,6 +7,7 @@ const imageSelectPreviewDefaultProps = () => ({
     maxImageSize: maxImageSize,
     imageTypes: supportedImageTypes,
     buttonText: buttonText,
+    dropAreaText: dropAreaText,
     imageStyle: null,
     componentLabel: null,
     onChange: null,

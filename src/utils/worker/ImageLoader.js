@@ -17,6 +17,11 @@ export class ImageLoader {
     // Files that have been processed - updated only by FileReader
     processedFiles = [];
 
+    /**
+     * Initiate Image Loader
+     * @param {FileList} files - Files selected
+     * @param {Object} state - Root Component state
+     */
     constructor(files, state) {
         this.files = [...files];
         this.mockState = { ...state };
@@ -33,7 +38,7 @@ export class ImageLoader {
     }
     
     loadImage(resolve, reject) {
-        //imagesToPreview - state where all image metadata is stored
+        //imagesToPreview - the state where all image metadata is stored
         let imagesToPreview = isEmptyObject(this.mockState.imagesToPreview) ? [] : [...this.mockState.imagesToPreview];
 
         let imagesCount = imagesToPreview.length;
@@ -76,7 +81,7 @@ export class ImageLoader {
                     }
 
                     const errorOut = () => {
-                        this.errorHandler(file.name, errorTypes.loadPreviewError, `File type could not be read but will be uploaded.`);
+                        this.errorHandler(file.name, errorTypes.loadPreviewError, `File type could not be read but can still be uploaded.`);
                         this.release(resolve, reject);
                     }
                     fileReader.onerror = () => errorOut();

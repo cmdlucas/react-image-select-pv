@@ -4,10 +4,11 @@ import spinner from '../../static/icons/ajax-loader.gif';
 
 const trigger = () => document.querySelector('#image-prompt').click();
 
-export const Prompter = ({ fetching, onChange, buttonText }) => {
+export const Prompter = ({ fetching, onChange, buttonText, dropAreaText }) => {
     return (
-        <div className="prompter no-user-select">
-            <div className="box text-center">
+        <div className="prompter">
+            <div className="prompter-button-holder no-user-select">
+                <div className="box text-center" >
                     {
                         !fetching ?
                             <React.Fragment>
@@ -25,7 +26,9 @@ export const Prompter = ({ fetching, onChange, buttonText }) => {
                             :
                             <img alt="Loading..." className="prompter-spinner" src={spinner} />
                     }
+                </div>
             </div>
+            {!fetching && <div className="drag-drop-prompt no-user-select"> <p> or {dropAreaText} </p> </div>}
         </div>
     );
 }

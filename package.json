@@ -1,9 +1,13 @@
 {
     "name": "react-image-select-pv",
-    "version": "1.1.4",
+    "version": "2.0.0",
     "description": "A configurable react component that allows preview of images and some other functionalities.",
     "main": "./bin/index.js",
     "author": "Caleb I. Lucas <caleb@lucasbin.com> (https://caleb.lucasbin.com)",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/cmdlucas/react-image-select-pv.git"
+    },
     "license": "MIT",
     "scripts": {
         "build": "webpack",
@@ -13,8 +17,8 @@
         "prop-types": "^15.6.0"
     },
     "peerDependencies": {
-        "react": "^16.2.0",
-        "react-dom": "^16.2.0"
+        "react": "^16.8.6",
+        "react-dom": "^16.8.6"
     },
     "devDependencies": {
         "@babel/core": "^7.2.2",
@@ -22,16 +26,16 @@
         "@babel/preset-env": "^7.2.3",
         "@babel/preset-react": "^7.0.0",
         "babel-core": "^7.0.0-bridge.0",
-        "babel-jest": "^23.6.0",
+        "babel-jest": "^24.8.0",
         "babel-loader": "^8.0.5",
         "css-loader": "^2.1.0",
         "enzyme": "^3.8.0",
         "enzyme-adapter-react-16": "^1.7.1",
-        "jest": "^23.6.0",
+        "jest": "^24.8.0",
         "path": "^0.12.7",
-        "react": "^16.7.0",
-        "react-dom": "^16.7.0",
-        "react-test-renderer": "^16.7.0",
+        "react": "^16.8.6",
+        "react-dom": "^16.8.6",
+        "react-test-renderer": "^16.8.6",
         "regenerator-runtime": "^0.13.1",
         "style-loader": "^0.23.1",
         "url-loader": "^1.1.2",

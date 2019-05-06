@@ -2,14 +2,24 @@ import { supportedImageTypes } from "./opconstants";
 
 /**
  * Check if an object is empty
- * @param {object} obj 
+ * @param {Object} obj 
  */
-export const isEmptyObject = (obj) => {
+export const isEmptyObject = obj => {
     for (var key in obj) {
         if (obj.hasOwnProperty(key))
             return false;
     }
     return true;
+}
+
+/**
+ * Convert an object to an array
+ * @param {Object} obj 
+ */
+export const objectToArray = (obj) => {
+    let arr = [];
+    if(typeof obj !== 'object') return arr;    
+    return Object.values(obj);
 }
 
 /**
@@ -50,6 +60,4 @@ export class ImageValidator {
         let ext = arr[arr.length - 1];
         return this.imgex.includes(ext) || (this.imgex.includes('jpg') && ext === 'jpeg') || (this.imgex.includes('jpeg') && ext === 'jpg');
     }
-
-
 }

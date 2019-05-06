@@ -149,6 +149,10 @@ The text to be used as the label for the component.
 
 The text to be used in the component's prompt button.
 
+#### dropAreaText [string] (optional) - default: "Drop images here."
+
+The text to be used as the component's drop area prompt.
+
 ##### imageStyle [object] (optional) - default: null
 
 An object of react-like styles to apply on the images in the preview.

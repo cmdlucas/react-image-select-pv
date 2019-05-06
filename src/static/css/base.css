@@ -13,22 +13,25 @@
     width: 100%;
     text-align: left;
     position: relative;
-    /* border: 1px solid #99424f; */
 }
 .rt-image-select-pv p{
     margin: 0px;
 }
-.rt-image-select-pv > .holder{
-    padding: 8px;
-}
 .rt-image-select-pv .holder > .label{
     font-size: 1.2em;
 }
-.rt-image-select-pv .holder > .preview,
 .rt-image-select-pv .holder > .prompter{
-    margin: 15px 0px;
+    display: flex;
+    padding: 15px 8px;
+    align-items: center;
+    flex-flow: row nowrap;
+    background-color: #F1F1FF;
+    border: 1px solid rgba(0, 0, 0, .125);
 }
-.rt-image-select-pv .holder > .prompter{
+.rt-image-select-pv .holder > .prompter .drag-drop-prompt{
+    padding: 0px 15px;
+}
+.rt-image-select-pv .holder > .prompter .prompter-button-holder{
     width: 200px;
     padding: 4px;
     cursor: pointer;
@@ -36,26 +39,26 @@
     border-radius: 5px;
     color: #333333;
     border: 1px solid #cccccc;
-    background-color: #F1F1FF;
+    background-color: #fefefe;
     box-shadow: rgba(145, 145, 145, 1) 1px 1px;
 }
-.rt-image-select-pv .holder > .prompter .prompter-button{
+.rt-image-select-pv .holder > .prompter .prompter-button-holder .prompter-button{
     display: inline-flex;
 }
-.rt-image-select-pv .holder > .prompter img{
+.rt-image-select-pv .holder > .prompter .prompter-button-holder img{
     height: 20px;
 }
-.rt-image-select-pv .holder > .prompter small{
+.rt-image-select-pv .holder > .prompter .prompter-button-holder small{
     margin-left: 20px;
 }
-.rt-image-select-pv .holder > .prompter .box .prompter-label{
+.rt-image-select-pv .holder > .prompter .prompter-button-holder .box .prompter-label{
     font-size: 18px;
     margin-top: -3px;
 }
 .rt-image-select-pv .holder > .preview{
-    width: 100%;
     display: flex;
     flex-wrap: wrap;
+    margin: 15px 8px;
     position: relative;
     flex-direction: row;
 }

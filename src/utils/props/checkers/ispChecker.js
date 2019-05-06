@@ -10,6 +10,7 @@ const imageSelectPreviewPropTypesChecker = () => ({
     maxImageSize: PropTypes.number.isRequired,
     imageTypes: PropTypes.string.isRequired,
     buttonText: PropTypes.string.isRequired,
+    dropAreaText: PropTypes.string.isRequired,
     imageStyle: PropTypes.object,
     componentLabel: PropTypes.string,
     onChange: PropTypes.func,
