@@ -7,12 +7,12 @@ const trigger = () => document.querySelector('#image-prompt').click();
 export const Prompter = ({ fetching, onChange, buttonText, dropAreaText }) => {
     return (
         <div className="prompter">
-            <div className="prompter-button-holder no-user-select">
+            <div className="prompter-button-holder no-user-select" onClick={() => !fetching ? trigger() : null}>
                 <div className="box text-center" >
                     {
                         !fetching ?
                             <React.Fragment>
-                                <div className="prompter-button" onClick={() => trigger()}>
+                                <div className="prompter-button">
                                     <input id="image-prompt" type="file" multiple className="gone" accept="image/*"
                                         onInput={e => onChange(e)} />
                                     <span className="prompter-icon">

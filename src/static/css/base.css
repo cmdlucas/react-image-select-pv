@@ -41,6 +41,11 @@
     border: 1px solid #cccccc;
     background-color: #fefefe;
     box-shadow: rgba(145, 145, 145, 1) 1px 1px;
+    transition: background-color ease-in-out 0.4s 0.02s;
+}
+.rt-image-select-pv .holder > .prompter .prompter-button-holder:hover{
+    background-color: rgba(0, 0, 0, .125);
+    transition: background-color ease-in-out 0.4s 0.02s;
 }
 .rt-image-select-pv .holder > .prompter .prompter-button-holder .prompter-button{
     display: inline-flex;
