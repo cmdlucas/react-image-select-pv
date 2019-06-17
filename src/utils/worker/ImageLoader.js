@@ -100,8 +100,6 @@ export class ImageLoader {
                 this.release(resolve, reject);
             }
         }
-
-
     }
 
     /**
@@ -120,7 +118,7 @@ export class ImageLoader {
      */
     release(resolve, reject) {
         // Be sure to have handled all submitted files before exiting
-        if (this.files.length == (this.processedFiles.length + this.problemFiles.length)) {
+        if (this.files.length === (this.processedFiles.length + this.problemFiles.length)) {
             //set mock state first
             this.setMockState({
                 ...this.mockState,

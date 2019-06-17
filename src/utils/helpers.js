@@ -57,7 +57,8 @@ export class ImageValidator {
      */
     isValid(imgName) {
         let arr = imgName.split('.');
-        let ext = arr[arr.length - 1];
+        let ext = arr[arr.length - 1].toLowerCase();
+        console.log(this.imgex);
         return this.imgex.includes(ext) || (this.imgex.includes('jpg') && ext === 'jpeg') || (this.imgex.includes('jpeg') && ext === 'jpg');
     }
 }
