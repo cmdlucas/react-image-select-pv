@@ -27,7 +27,8 @@ class Root extends Component {
         new ImageLoader(files, {
             ...this.state,
             max: this.props.max,
-            maxImageSize: this.props.maxImageSize
+            maxImageSize: this.props.maxImageSize,
+            allowedImages: this.props.imageTypes
         }).load()
             .then(newState => {
                 if (this._mounted) {
