@@ -56,7 +56,8 @@ class Root extends Component {
             this.setState({
                 ...this.state, problemFiles: [],
                 imagesToPreview: imagesToPreview.filter(({index}) => imgIndex !== index)
-            })
+            });
+            this.broadcastNewState();
         }
     }
 
