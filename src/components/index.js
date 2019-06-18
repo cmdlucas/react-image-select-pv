@@ -32,8 +32,7 @@ class Root extends Component {
         }).load()
             .then(newState => {
                 if (this._mounted) {
-                    this.setState({ ...newState });
-                    this.broadcastNewState();
+                    this.setState({ ...newState }, () => this.broadcastNewState());
                 }
             })
     }
@@ -56,8 +55,7 @@ class Root extends Component {
             this.setState({
                 ...this.state, problemFiles: [],
                 imagesToPreview: imagesToPreview.filter(({index}) => imgIndex !== index)
-            });
-            this.broadcastNewState();
+            }, () => this.broadcastNewState());
         }
     }
 
