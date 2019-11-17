@@ -3,6 +3,7 @@ import { supportedImageTypes, maxUploadableImages, maxImageSize, buttonText, dro
 const imageSelectPreviewDefaultProps = () => ({
     preview: true,
     hide: false,
+    clearAll: false,
     max: maxUploadableImages,
     maxImageSize: maxImageSize,
     imageTypes: supportedImageTypes,

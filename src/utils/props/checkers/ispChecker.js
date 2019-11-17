@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 const imageSelectPreviewPropTypesChecker = () => ({
     preview: PropTypes.bool.isRequired,
     hide: PropTypes.bool.isRequired,
+    clearAll: PropTypes.bool.isRequired,
     max: PropTypes.number.isRequired,
     maxImageSize: PropTypes.number.isRequired,
     imageTypes: PropTypes.string.isRequired,
