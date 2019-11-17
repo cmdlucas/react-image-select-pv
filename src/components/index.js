@@ -94,8 +94,8 @@ class Root extends Component {
      * Handle clear all event
      * @param {boolean} clear 
      */
-    handleClearAll(clear) {
-        if(clear && this._mounted) {
+    handleClearAll(reset) {
+        if(reset && this._mounted) {
             this.setState({
                 ...this.state, imagesToPreview: []
             })
@@ -103,8 +103,8 @@ class Root extends Component {
     }
 
     componentDidUpdate(prevProps) {
-        if(prevProps.clearAll !== this.props.clearAll) {
-            this.handleClearAll(this.props.clearAll);
+        if(prevProps.reset !== this.props.reset) {
+            this.handleClearAll(this.props.reset);
         }
     }
 
