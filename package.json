@@ -1,6 +1,6 @@
 {
     "name": "react-image-select-pv",
-    "version": "2.1.2",
+    "version": "2.2.0",
     "description": "A configurable react component that allows preview of images and some other functionalities.",
     "main": "./bin/index.js",
     "author": "Caleb I. Lucas <caleb@lucasbin.com> (https://caleb.lucasbin.com)",
@@ -51,8 +51,5 @@
             "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/src/static/fileMock.js",
             "\\.(css|less)$": "<rootDir>/src/static/styleMock.js"
         }
-    },
-    "publishConfig": { 
-        "registry": "https://npm.pkg.github.com/" 
     }
 }
