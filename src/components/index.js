@@ -50,11 +50,11 @@ class Root extends Component {
      * @param {string} imgIndex 
      */
     ownOnRemove(imgIndex) {
-        let imagesToPreview = [ ...this.state.imagesToPreview ];
+        let imagesToPreview = [...this.state.imagesToPreview];
         if (this._mounted) {
             this.setState({
                 ...this.state, problemFiles: [],
-                imagesToPreview: imagesToPreview.filter(({index}) => imgIndex !== index)
+                imagesToPreview: imagesToPreview.filter(({ index }) => imgIndex !== index)
             }, () => this.broadcastNewState());
         }
     }
@@ -91,20 +91,18 @@ class Root extends Component {
     }
 
     /**
-     * Handle clear all event
-     * @param {boolean} clear 
+     * Handle reset event
+     * @param {boolean} reset 
      */
-    handleClearAll(reset) {
-        if(reset && this._mounted) {
-            this.setState({
-                ...this.state, imagesToPreview: []
-            })
+    handleReset(reset) {
+        if (reset && this._mounted) {
+            this.setState({ ...rootDefaultState() })
         }
     }
-
+    
     componentDidUpdate(prevProps) {
-        if(prevProps.reset !== this.props.reset) {
-            this.handleClearAll(this.props.reset);
+        if (prevProps.reset !== this.props.reset) {
+            this.handleReset(this.props.reset);
         }
     }
 

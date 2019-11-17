@@ -1,5 +1,3 @@
-import { supportedImageTypes } from "../../opconstants";
-
 /**
  * fetching: boolean value to show if images are being fetched
  * imagesToPreview: array of objects of all previewable image metadata
@@ -9,8 +7,7 @@ import { supportedImageTypes } from "../../opconstants";
 const rootDefaultState = () => ({
     fetching: false,
     imagesToPreview: [],
-    problemFiles: [],
-    allowedImages: supportedImageTypes
+    problemFiles: []
 })
 
 export default rootDefaultState;

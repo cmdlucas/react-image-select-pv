@@ -18,7 +18,7 @@ export class Broadcaster {
                 callBack(filesArray);
             }
         } catch (error) {
-            console.log(error);
+            console.log(`react-image-select-pv: ${error}`);
         }
     }
 
@@ -32,7 +32,7 @@ export class Broadcaster {
                 callBack(this.data.problems)
             }
         } catch (error) {
-            console.log(error);
+            console.log(`react-image-select-pv: ${error}`);
         }
     }
 }
