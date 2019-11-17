@@ -90,6 +90,24 @@ class Root extends Component {
         return false;
     }
 
+    /**
+     * Handle clear all event
+     * @param {boolean} clear 
+     */
+    handleClearAll(clear) {
+        if(clear && this._mounted) {
+            this.setState({
+                ...this.state, imagesToPreview: []
+            })
+        }
+    }
+
+    componentDidUpdate(prevProps) {
+        if(prevProps.clearAll !== this.props.clearAll) {
+            this.handleClearAll(this.props.clearAll);
+        }
+    }
+
     componentDidMount() {
         this._mounted = true;
     }
