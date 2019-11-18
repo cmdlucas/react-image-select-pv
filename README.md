@@ -85,6 +85,10 @@ Enables/Disables the preview of images after user selection. Does **not** turn o
 Can be useful when you want the images to be shown in a separate component in your application.
 
 
+##### reset [boolean] (optional) - default: false
+
+Instructs the component to reset the data loaded. This affects images in preview as well as the errors currently on the screen. **Cannot** have any effect when the component initially renders.
+
 ##### hide [boolean] (optional) - default: false
 
 Decides whether `<ImageSelectPreview />` component should be active or not. Disables every other functionality when set to `true`.
