@@ -60,6 +60,11 @@ describe('Root component', () => {
         wrapper.setProps({ ...defaultProps, preview: false });
         expect( wrapper.find( Preview ) ).toHaveLength(0);
     })
+
+    it('should not render <Preview /> after a reset', () => {
+        wrapper.setProps({ ...defaultProps, reset: true });
+        expect( wrapper.find('.preview') ).toHaveLength(0);
+    })
     
     it('should render <Errors /> when problemFiles is not empty ', () => {
         let problemFiles = [{}, {}];

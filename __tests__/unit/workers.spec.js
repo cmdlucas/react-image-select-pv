@@ -1,6 +1,7 @@
 import ImageLoader from "../../src/utils/worker/ImageLoader";
 import rootDefaultState from "../../src/utils/state/default/rootState";
 import Broadcaster from "../../src/utils/worker/Broadcaster";
+import { supportedImageTypes } from "../../src/utils/opconstants";
 
 const setMockFunctions = imageLoader => {
     imageLoader.errorHandler = jest.fn();
@@ -32,7 +33,8 @@ let reject = jest.fn();
 
 describe('ImageLoader', () => {  
     let mockState = {
-        ...rootDefaultState(), 
+        ...rootDefaultState(),
+        allowedImages: supportedImageTypes,
         max: 1,
         maxImageSize: 999
     }   
